@@ -6,12 +6,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 
 namespace life_counter
 {
     public partial class Form1 : Form
     {
+       
         public string Player2
         {
             get;
@@ -20,10 +22,15 @@ namespace life_counter
         string Player1
         {
             set;
-            get;
+            get; 
         }
+
         int lifetotalA = 20;
         int lifetotalB = 20;
+        private int sec;
+        private int uur;
+        private int min;
+
         public Form1()
         {
             InitializeComponent();
@@ -31,7 +38,12 @@ namespace life_counter
             textBox2.Text = lifetotalB.ToString();
             Player1 = textBox4.Text;
             Player2 = textBox1.Text;
+           
+        }
 
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
         void reset()
         {
@@ -112,6 +124,7 @@ namespace life_counter
         private void Form1_Load(object sender, EventArgs e)
         {
             
+
         }
 
         
@@ -229,13 +242,80 @@ namespace life_counter
         private void darkCyanToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.BackColor = Color.DarkCyan;
+            textBox6.BackColor = Color.DarkCyan;
         }
 
         private void cyanToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.BackColor = Color.Cyan;
+            textBox6.BackColor = Color.Cyan;
+        }
+
+        private void blueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.Blue;
+            textBox6.BackColor = Color.Blue;
+        }
+
+        private void darkBlueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.DarkBlue;
+            textBox6.BackColor = Color.DarkBlue;
+        }
+
+        private void yellowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.Yellow;
+            textBox6.BackColor = Color.Yellow;
+        }
+
+        private void goldToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.Gold;
+            textBox6.BackColor = Color.Gold;
+        }
+
+        private void redToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void darkRedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+         
+
         }
 
         
+         
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            timer1.Start();  
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            sec++;
+            textBox6.Text = uur.ToString();
+            textBox6.Text = ":";
+            textBox6.Text = min.ToString();
+            textBox6.Text = ":";
+            textBox6.Text = sec.ToString();
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            min++;
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            uur++;
+        }
     }
 }
