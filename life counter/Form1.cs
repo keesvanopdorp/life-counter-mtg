@@ -38,17 +38,51 @@ namespace life_counter
         {
             InitializeComponent();
             textBox3.Text = lifetotalA.ToString();
+            textBox3.Text += " Lives";
             textBox2.Text = lifetotalB.ToString();
+            textBox2.Text += " Lives";
             Player1 = textBox4.Text;
             Player2 = textBox1.Text;
             textBox7.Text = winA.ToString();
+            textBox7.Text += " Win";
             textBox8.Text = winB.ToString();
+            textBox8.Text += " Win";
+            textBox6.Text = sec.ToString();
+            textBox6.Text = ":";
+            textBox6.Text = min.ToString();
+            textBox6.Text = ":";
+            textBox6.Text = uur.ToString();
 
         }
 
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             throw new NotImplementedException();
+        }
+
+        void livesA()
+        {
+            if(lifetotalA >= 10)
+            {
+                textBox3.Text += " Lives";
+            }
+
+            if(lifetotalA< 10)
+            {
+                textBox3.Text += " Life";
+            }
+        }
+        void livesB()
+        {
+            if (lifetotalB >= 10)
+            {
+                textBox2.Text += " Lives";
+            }
+
+            if(lifetotalB<10)
+            {
+                textBox2.Text += " live";
+            }
         }
         void reset()
         {
@@ -58,10 +92,17 @@ namespace life_counter
             textBox2.Clear();
             textBox5.Clear();
             textBox3.Text = lifetotalA.ToString();
+            livesA();
             textBox2.Text = lifetotalB.ToString();
-            timer1.Stop();
+            livesB();
             sec = 0;
+            min = 0;
+            uur = 0;
             textBox6.Text = sec.ToString();
+            textBox6.Text = ":";
+            textBox6.Text = min.ToString();
+            textBox6.Text = ":";
+            textBox6.Text = uur.ToString();
 
         }
 
@@ -71,6 +112,7 @@ namespace life_counter
             textBox5.Text += (string.Format("{0} has lost 2 live", Player1)) + System.Environment.NewLine;
             lifetotalA = lifetotalA - 2;
             textBox3.Text = lifetotalA.ToString();
+            livesA();
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -79,6 +121,7 @@ namespace life_counter
             textBox3.Text += (string.Format("{0} has gained 2 lives", Player1)) + System.Environment.NewLine;
             lifetotalA = lifetotalA + 2;
             textBox3.Text = lifetotalA.ToString();
+            livesA();
         }
 
 
@@ -88,6 +131,7 @@ namespace life_counter
             textBox5.Text = (string.Format("{0} has gained 5 lives", Player1)) + System.Environment.NewLine;
             lifetotalA = lifetotalA + 5;
             textBox3.Text = lifetotalA.ToString();
+            livesA();
         }
 
         private void button12_Click(object sender, EventArgs e)
@@ -96,16 +140,18 @@ namespace life_counter
             textBox5.Text += (string.Format("{0} has gained 1 live",Player1)) + System.Environment.NewLine;
             lifetotalA = lifetotalA + 1;
             textBox3.Text = lifetotalA.ToString();
+            livesA();
 
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
             string player1 = textBox4.Text;
-            textBox3.Clear();
+            textBox3.   Clear();
             textBox5.Text += (string.Format("{0} has lost 1 live",Player1)) + System.Environment.NewLine;
             lifetotalA = lifetotalA - 1;
             textBox3.Text = lifetotalA.ToString();
+            livesA();
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -131,6 +177,16 @@ namespace life_counter
                     winB = winB + 1;
                     textBox8.Text = winB.ToString();
 
+                    if (winB < 2)
+                    {
+                        textBox8.Text += " Win";
+                    }
+
+                    if (winB >= 2)
+                    {
+                        textBox8.Text += " Wins";
+                    }
+                
                     if (winB== GNFTW)
                     {
                         MessageBox.Show(string.Format("{0} has won the match",Player2));
@@ -158,6 +214,7 @@ namespace life_counter
             textBox5.Text += (string.Format("{0} has lost 5 lives", Player2)) + System.Environment.NewLine;
             lifetotalB = lifetotalB - 5;
             textBox2.Text = lifetotalB.ToString();
+            livesB();
         }
 
         
@@ -168,6 +225,7 @@ namespace life_counter
             textBox5.Text += (string.Format("{0} has lost 2 lives", Player2)) + System.Environment.NewLine;
             lifetotalB = lifetotalB - 2;
             textBox2.Text = lifetotalB.ToString();
+            livesB();
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -176,6 +234,7 @@ namespace life_counter
             textBox5.Text += (string.Format("{0} has gainded 2 lives", Player2)) + System.Environment.NewLine;
             lifetotalB = lifetotalB + 2;
             textBox2.Text = lifetotalB.ToString();
+            livesB();
         }
 
         private void button17_Click(object sender, EventArgs e)
@@ -184,6 +243,7 @@ namespace life_counter
             textBox5.Text += (string.Format("{0} has gainded 5 lives", Player2)) + System.Environment.NewLine;
             lifetotalB = lifetotalB + 5;
             textBox2.Text = lifetotalB.ToString();
+            livesB();
         }
 
 
@@ -193,6 +253,7 @@ namespace life_counter
             textBox5.Text += (string.Format("{0} has lost 1 live", Player2)) + System.Environment.NewLine;
             lifetotalB = lifetotalB - 1;
             textBox2.Text = lifetotalB.ToString();
+            livesB();
 
         }
 
@@ -206,7 +267,8 @@ namespace life_counter
             textBox3.Clear();
             textBox5.Text += (string.Format("{0} has lost 5 lives", Player1)) + System.Environment.NewLine;
             lifetotalA = lifetotalA - 5;
-            textBox3.Text = lifetotalA.ToString();  
+            textBox3.Text = lifetotalA.ToString();
+            livesA();
                 }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -233,6 +295,7 @@ namespace life_counter
             textBox5.Text += (string.Format("{0} has gained 1 live",Player2)) + System.Environment.NewLine;
             lifetotalB = lifetotalB + 1;
             textBox2.Text = lifetotalB.ToString();
+            livesB();
         }
 
         private void button19_Click(object sender, EventArgs e) {
@@ -255,6 +318,16 @@ namespace life_counter
                 {
                     winA = winA + 1;
                     textBox7.Text = winA.ToString();
+
+                    if (winA < 2)
+                    {
+                        textBox7.Text += " Win";
+                    }
+
+                    if (winA >= 2)
+                    {
+                        textBox7.Text += " Wins";
+                    }
 
                     if (winA == GNFTW)
                     {
@@ -333,48 +406,6 @@ namespace life_counter
 
         }
 
-        
-         
-        private void toolStripButton2_Click(object sender, EventArgs e)
-        {
-            timer1.Start();
-            timer2.Start();
-            timer3.Start();
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-
-            sec++;
-            textBox6.Clear();
-            textBox6.Text += sec.ToString();
-
-            if (sec == 60)
-            {
-                min++;
-                textBox6.Text = ":";
-                textBox6.Text = min.ToString();
-
-            }
-            
-            
-
-        }
-
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-            
-            min = min + 1;
-            textBox6.Text += min.ToString();
-            textBox6.Text = ":";
-
-        }
-
-        private void timer3_Tick(object sender, EventArgs e)
-        {
-          
-            uur++;
-        }
 
         private void disableWincounterToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -433,19 +464,33 @@ namespace life_counter
 
         private void startTimerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            timer1.Start();
+            backgroundWorker1.RunWorkerAsync();
         }
 
         private void stopTimerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            timer1.Stop();
+         
         }
 
         private void resetTimerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            timer1.Stop();
+            
             sec = 0;
-            textBox6.Text = sec.ToString();
+
+
+
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            for (int i = 0; i < 60; i++)
+            {
+                sec++;
+                textBox6.Clear();
+                textBox6.Text += sec.ToString();
+                Thread.Sleep(1000);
+
+            }
         }
     }
 }
