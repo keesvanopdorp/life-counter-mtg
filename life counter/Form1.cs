@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace life_counter
 {
@@ -24,13 +25,15 @@ namespace life_counter
             set;
             get; 
         }
-
+        public int sec;
+        public int min;
+        public int uur;
         int lifetotalA = 20;
         int lifetotalB = 20;
-        private int sec;
-        private int uur;
-        private int min;
-
+        public bool win_counter = true;
+        public int winA;
+        public int winB;
+        public int GNFTW=2; // stands for Games Needed For The Win
         public Form1()
         {
             InitializeComponent();
@@ -38,7 +41,9 @@ namespace life_counter
             textBox2.Text = lifetotalB.ToString();
             Player1 = textBox4.Text;
             Player2 = textBox1.Text;
-           
+            textBox7.Text = winA.ToString();
+            textBox8.Text = winB.ToString();
+
         }
 
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -54,6 +59,9 @@ namespace life_counter
             textBox5.Clear();
             textBox3.Text = lifetotalA.ToString();
             textBox2.Text = lifetotalB.ToString();
+            timer1.Stop();
+            sec = 0;
+            textBox6.Text = sec.ToString();
 
         }
 
@@ -118,6 +126,21 @@ namespace life_counter
             if(lifetotalA <= 0){
                 MessageBox.Show(string.Format("{0} has won the game", Player2));
                 reset();
+                if (win_counter == true)
+                {
+                    winB = winB + 1;
+                    textBox8.Text = winB.ToString();
+
+                    if (winB== GNFTW)
+                    {
+                        MessageBox.Show(string.Format("{0} has won the match",Player2));
+                        reset();
+                        winA = 0;
+                        winB = 0;
+                        textBox7.Text = winA.ToString();
+                        textBox8.Text = winB.ToString();
+                    }
+                }
             }
         }
 
@@ -215,6 +238,10 @@ namespace life_counter
         private void button19_Click(object sender, EventArgs e) {
             MessageBox.Show("The game is reset");
             reset();
+            winA = 0;
+            winB = 0;
+            textBox7.Text = winA.ToString();
+            textBox8.Text = winB.ToString();
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -224,6 +251,21 @@ namespace life_counter
                 string player1 = textBox4.Text;
                 MessageBox.Show(string.Format("{0} has won the game",player1));
                 reset();
+                if(win_counter== true)
+                {
+                    winA = winA + 1;
+                    textBox7.Text = winA.ToString();
+
+                    if (winA == GNFTW)
+                    {
+                        MessageBox.Show(string.Format("{0} has won the Match",player1));
+                        reset();
+                        winA = 0;
+                        winB = 0;
+                        textBox7.Text = winA.ToString();
+                        textBox8.Text = winB.ToString();
+                    }
+                }
             }
         }
 
@@ -295,27 +337,115 @@ namespace life_counter
          
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            timer1.Start();  
+            timer1.Start();
+            timer2.Start();
+            timer3.Start();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+
             sec++;
-            textBox6.Text = uur.ToString();
-            textBox6.Text = ":";
-            textBox6.Text = min.ToString();
-            textBox6.Text = ":";
-            textBox6.Text = sec.ToString();
+            textBox6.Clear();
+            textBox6.Text += sec.ToString();
+
+            if (sec == 60)
+            {
+                min++;
+                textBox6.Text = ":";
+                textBox6.Text = min.ToString();
+
+            }
+            
+            
+
         }
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            min++;
+            
+            min = min + 1;
+            textBox6.Text += min.ToString();
+            textBox6.Text = ":";
+
         }
 
         private void timer3_Tick(object sender, EventArgs e)
         {
+          
             uur++;
+        }
+
+        private void disableWincounterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            win_counter = false;
+        }
+
+       
+
+        private void enableWinCounterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            win_counter = true;
+        }
+
+        private void resetWinCounterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            winB = 0;
+            winA = 0;
+            textBox7.Text = winA.ToString();
+            textBox8.Text = winB.ToString();
+        }
+
+        private void gameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GNFTW = 1;
+            win_counter = true;
+        }
+
+        private void gamesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GNFTW = 2;
+            win_counter = true;
+        }
+
+        private void gamesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            GNFTW = 3;
+            win_counter = true;
+        }
+
+        private void gamesToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            GNFTW = 4;
+            win_counter = true;
+        }
+
+        private void gamesToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            GNFTW = 5;
+            win_counter = true;
+        }
+
+        private void toolStripDropDownButton2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void startTimerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            timer1.Start();
+        }
+
+        private void stopTimerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            timer1.Stop();
+        }
+
+        private void resetTimerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            sec = 0;
+            textBox6.Text = sec.ToString();
         }
     }
 }
