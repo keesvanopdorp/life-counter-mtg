@@ -195,6 +195,9 @@ namespace life_counter
                         winB = 0;
                         textBox7.Text = winA.ToString();
                         textBox8.Text = winB.ToString();
+                        textBox7.Text += " Win";
+                        textBox8.Text += " Win";
+
                     }
                 }
             }
@@ -305,6 +308,9 @@ namespace life_counter
             winB = 0;
             textBox7.Text = winA.ToString();
             textBox8.Text = winB.ToString();
+            textBox7.Text += " win";
+            textBox8.Text += " win";
+
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -337,6 +343,9 @@ namespace life_counter
                         winB = 0;
                         textBox7.Text = winA.ToString();
                         textBox8.Text = winB.ToString();
+                        textBox7.Text += " Win";
+                        textBox8.Text += " Win";
+
                     }
                 }
             }
@@ -392,12 +401,14 @@ namespace life_counter
 
         private void redToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            this.BackColor = Color.Red;
+            textBox6.BackColor = Color.Red;
         }
 
         private void darkRedToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            this.BackColor = Color.DarkRed;
+            textBox6.BackColor = Color.DarkRed;
         }
 
         private void textBox6_TextChanged(object sender, EventArgs e)
@@ -491,6 +502,27 @@ namespace life_counter
                 Thread.Sleep(1000);
 
             }
+        }
+
+        private void openCounterMenuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.EnableVisualStyles();
+
+            var thread = new Thread(ThreadStart);
+            // allow UI with ApartmentState.STA though [STAThread] above should give that to you
+            thread.TrySetApartmentState(ApartmentState.STA);
+            thread.Start();
+        }
+
+        private static void ThreadStart()
+        {
+            Application.Run(new manacounter()); // <-- other form started on its own UI thread
+        }
+
+        private void closeCounterMenuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            manacounter y = new manacounter();
+            y.Close();
         }
     }
 }

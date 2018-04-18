@@ -49,7 +49,14 @@
             this.button9 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.button19 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
@@ -78,14 +85,10 @@
             this.gamesToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.gamesToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.button19 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripDropDownButton4 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.openCounterMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeCounterMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -273,22 +276,89 @@
             this.button16.UseVisualStyleBackColor = true;
             this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
-            // toolStrip1
+            // textBox5
             // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.toolStripSeparator1,
-            this.toolStripDropDownButton1,
-            this.toolStripSeparator2,
-            this.toolStripDropDownButton3,
-            this.toolStripSeparator3,
-            this.toolStripDropDownButton2,
-            this.toolStripSeparator4});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(578, 25);
-            this.toolStrip1.TabIndex = 24;
-            this.toolStrip1.Text = "toolStrip1";
+            this.textBox5.BackColor = System.Drawing.Color.White;
+            this.textBox5.Cursor = System.Windows.Forms.Cursors.Default;
+            this.textBox5.Location = new System.Drawing.Point(210, 125);
+            this.textBox5.Multiline = true;
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(161, 313);
+            this.textBox5.TabIndex = 25;
+            // 
+            // button19
+            // 
+            this.button19.Location = new System.Drawing.Point(210, 87);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(161, 32);
+            this.button19.TabIndex = 26;
+            this.button19.Text = "Reset whole Game";
+            this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(377, 236);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(85, 66);
+            this.button3.TabIndex = 29;
+            this.button3.Text = "Lives +1";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(487, 304);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(85, 66);
+            this.button7.TabIndex = 30;
+            this.button7.Text = "Lives -2";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // textBox6
+            // 
+            this.textBox6.BackColor = System.Drawing.Color.DarkCyan;
+            this.textBox6.Font = new System.Drawing.Font("Arial", 30F);
+            this.textBox6.Location = new System.Drawing.Point(175, 28);
+            this.textBox6.Multiline = true;
+            this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
+            this.textBox6.Size = new System.Drawing.Size(235, 53);
+            this.textBox6.TabIndex = 31;
+            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            // 
+            // textBox7
+            // 
+            this.textBox7.BackColor = System.Drawing.Color.White;
+            this.textBox7.Cursor = System.Windows.Forms.Cursors.Default;
+            this.textBox7.Font = new System.Drawing.Font("Arial", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox7.Location = new System.Drawing.Point(10, 28);
+            this.textBox7.Multiline = true;
+            this.textBox7.Name = "textBox7";
+            this.textBox7.ReadOnly = true;
+            this.textBox7.Size = new System.Drawing.Size(156, 52);
+            this.textBox7.TabIndex = 32;
+            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox8
+            // 
+            this.textBox8.BackColor = System.Drawing.Color.White;
+            this.textBox8.Cursor = System.Windows.Forms.Cursors.Default;
+            this.textBox8.Font = new System.Drawing.Font("Arial", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox8.Location = new System.Drawing.Point(416, 29);
+            this.textBox8.Multiline = true;
+            this.textBox8.Name = "textBox8";
+            this.textBox8.ReadOnly = true;
+            this.textBox8.Size = new System.Drawing.Size(156, 52);
+            this.textBox8.TabIndex = 33;
+            this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // toolStripButton1
             // 
@@ -510,89 +580,49 @@
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
             // 
-            // textBox5
+            // toolStrip1
             // 
-            this.textBox5.BackColor = System.Drawing.Color.White;
-            this.textBox5.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox5.Location = new System.Drawing.Point(210, 125);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(161, 313);
-            this.textBox5.TabIndex = 25;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton1,
+            this.toolStripSeparator1,
+            this.toolStripDropDownButton1,
+            this.toolStripSeparator2,
+            this.toolStripDropDownButton3,
+            this.toolStripSeparator3,
+            this.toolStripDropDownButton2,
+            this.toolStripSeparator4,
+            this.toolStripDropDownButton4});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(578, 25);
+            this.toolStrip1.TabIndex = 24;
+            this.toolStrip1.Text = "toolStrip1";
             // 
-            // button19
+            // toolStripDropDownButton4
             // 
-            this.button19.Location = new System.Drawing.Point(210, 87);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(161, 32);
-            this.button19.TabIndex = 26;
-            this.button19.Text = "Reset whole Game";
-            this.button19.UseVisualStyleBackColor = true;
-            this.button19.Click += new System.EventHandler(this.button19_Click);
+            this.toolStripDropDownButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripDropDownButton4.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openCounterMenuToolStripMenuItem,
+            this.closeCounterMenuToolStripMenuItem});
+            this.toolStripDropDownButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton4.Image")));
+            this.toolStripDropDownButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton4.Name = "toolStripDropDownButton4";
+            this.toolStripDropDownButton4.Size = new System.Drawing.Size(29, 22);
+            this.toolStripDropDownButton4.Text = "toolStripDropDownButton4";
             // 
-            // button3
+            // openCounterMenuToolStripMenuItem
             // 
-            this.button3.Location = new System.Drawing.Point(377, 236);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(85, 66);
-            this.button3.TabIndex = 29;
-            this.button3.Text = "Lives +1";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.openCounterMenuToolStripMenuItem.Name = "openCounterMenuToolStripMenuItem";
+            this.openCounterMenuToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.openCounterMenuToolStripMenuItem.Text = "open Counter menu";
+            this.openCounterMenuToolStripMenuItem.Click += new System.EventHandler(this.openCounterMenuToolStripMenuItem_Click);
             // 
-            // button7
+            // closeCounterMenuToolStripMenuItem
             // 
-            this.button7.Location = new System.Drawing.Point(487, 304);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(85, 66);
-            this.button7.TabIndex = 30;
-            this.button7.Text = "Lives -2";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // textBox6
-            // 
-            this.textBox6.BackColor = System.Drawing.Color.DarkCyan;
-            this.textBox6.Font = new System.Drawing.Font("Arial", 30F);
-            this.textBox6.Location = new System.Drawing.Point(175, 28);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(235, 53);
-            this.textBox6.TabIndex = 31;
-            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
-            // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            // 
-            // textBox7
-            // 
-            this.textBox7.BackColor = System.Drawing.Color.White;
-            this.textBox7.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox7.Font = new System.Drawing.Font("Arial", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(10, 28);
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(156, 52);
-            this.textBox7.TabIndex = 32;
-            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox8
-            // 
-            this.textBox8.BackColor = System.Drawing.Color.White;
-            this.textBox8.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox8.Font = new System.Drawing.Font("Arial", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(416, 29);
-            this.textBox8.Multiline = true;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(156, 52);
-            this.textBox8.TabIndex = 33;
-            this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.closeCounterMenuToolStripMenuItem.Name = "closeCounterMenuToolStripMenuItem";
+            this.closeCounterMenuToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.closeCounterMenuToolStripMenuItem.Text = "close Counter menu";
+            this.closeCounterMenuToolStripMenuItem.Click += new System.EventHandler(this.closeCounterMenuToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -658,43 +688,46 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
         private System.Windows.Forms.ToolStripMenuItem darkCyanToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cyanToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem blueToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem darkBlueToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem yellowToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem goldToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem redToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem darkRedToolStripMenuItem;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton3;
+        private System.Windows.Forms.ToolStripMenuItem startTimerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem stopTimerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem resetTimerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton2;
-        private System.Windows.Forms.ToolStripMenuItem disableWincounterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem enableWinCounterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem disableWincounterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem resetWinCounterToolStripMenuItem;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.ToolStripMenuItem numberOfGamesToWinToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gamesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gamesToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem gamesToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem gamesToolStripMenuItem3;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton3;
-        private System.Windows.Forms.ToolStripMenuItem startTimerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem stopTimerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem resetTimerToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton4;
+        private System.Windows.Forms.ToolStripMenuItem openCounterMenuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem closeCounterMenuToolStripMenuItem;
     }
 }
 
